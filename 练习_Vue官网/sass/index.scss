@@ -1,0 +1,687 @@
+@import "base";
+
+@font-face {
+    font-family: 'icomoon';
+    src: url('../fonts/icomoon.eot?cb68af');
+    src: url('../fonts/icomoon.eot?cb68af#iefix') format('embedded-opentype'),
+        url('../fonts/icomoon.ttf?cb68af') format('truetype'),
+        url('../fonts/icomoon.woff?cb68af') format('woff'),
+        url('../fonts/icomoon.svg?cb68af#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+$base-color: #999797;
+$color-green: #42b883;
+$color-dark: darken($base-color, 50%);
+$color-light: lighten($base-color, 20%);
+$color-transition: all .4s;
+
+// 头部模块
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    width: 100%;
+    background-color: #fff;
+    border-bottom: 1px solid rgba(60, 60, 60, .12);
+
+    .header-nav {
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        max-width: 1376px;
+        height: 55px;
+        padding: 0 12px 0 32px;
+        white-space: nowrap;
+
+        .header-left {
+            display: flex;
+
+            .logo {
+                a {
+                    display: flex;
+                    width: 81px;
+                    height: 55px;
+                    padding-top: 1px;
+                    align-items: center;
+                    transition: $color-transition;
+
+                    &:hover {
+                        color: $color-light;
+
+                        .img {
+                            opacity: 0.5;
+                        }
+                    }
+
+                    .img {
+                        width: 24px;
+                        height: 24px;
+                        vertical-align: middle;
+                        opacity: 1;
+                        transition: opacity .25s;
+                    }
+
+                    .text {
+                        padding-left: 8px;
+                        font-size: 16px;
+                        font-weight: 500;
+                    }
+                }
+            }
+
+            .search {
+                height: 55px;
+                line-height: 55px;
+                display: flex;
+                padding-left: 24px;
+                padding-right: 8px;
+                align-items: center;
+                cursor: pointer;
+
+                &:hover {
+                    .btn {
+                        color: $color-green;
+                        border-color: $color-green;
+                    }
+
+                    &::before,
+                    .text {
+                        color: $color-dark;
+                    }
+
+                }
+
+                &::before {
+                    content: '\e986';
+                    font-family: 'icomoon';
+                    width: 15px;
+                    padding-right: 10px;
+                    transition: $color-transition;
+                    color: $base-color;
+                }
+
+                .text {
+                    padding-right: 10px;
+                    transition: $color-transition;
+                    color: $base-color;
+                }
+
+                .btn {
+                    height: 22px;
+                    line-height: 22px;
+                    padding: 0 6px;
+                    font-size: 12px;
+                    color: #9c9c9c;
+                    border: 1px solid #9c9c9c;
+                    border-radius: 4px;
+                    background-color: transparent;
+                    transition: $color-transition;
+                }
+            }
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            flex-wrap: nowrap;
+
+            .item {
+                display: none;
+                font-family: 'icomoon';
+                background-color: #fff;
+                font-size: 16px;
+
+                .sp {
+                    margin-right: 20px;
+                    color: #898989;
+                    transition: $color-transition;
+
+                    &:hover {
+                        color: $color-dark;
+                    }
+                }
+
+                i {
+                    em {
+                        display: none;
+                    }
+
+                    &:hover {
+                        span {
+                            display: none;
+                        }
+
+                        em {
+                            display: inline-block;
+                        }
+                    }
+                }
+            }
+
+            .nav {
+                display: flex;
+
+                ul {
+                    .flyout,
+                    .link {
+                        position: relative;
+                        height: 55px;
+                        line-height: 55px;
+                        font-size: 13px;
+                        float: left;
+                        padding: 0 12px;
+
+                        a {
+                            transition: $color-transition;
+                        }
+                    }
+
+                    .flyout {
+                        .flyout-menu {
+                            visibility: hidden;
+                            position: absolute;
+                            top: 50px;
+                            right: 0;
+                            width: 192px;
+                            padding: 12px 0;
+                            background-color: #fff;
+                            box-shadow: 0 12px 32px rgba(0, 0, 0, .1);
+                            border-radius: 8px;
+                            transition: all .5s;
+                            opacity: 0;
+
+                            ul li {
+                                position: relative;
+                                line-height: 24px;
+                                font-size: 16px;
+
+                                .items {
+                                    display: block;
+                                    padding: 0 18px;
+                                    line-height: 28px;
+                                    font-size: 13px;
+                                    color: #213547;
+
+                                    span {
+                                        font-family: 'icomoon';
+                                        color: #9c9c9c;
+                                        font-size: 13px;
+                                    }
+
+                                    .github {
+                                        float: right;
+                                        color: #000;
+                                        font-size: 16px;
+
+                                    }
+
+                                    &:hover {
+                                        color: $color-green;
+                                    }
+                                }
+
+                                .last {
+                                    padding-bottom: 10px;
+                                    border-bottom: 1px solid #e0e0e0;
+                                }
+
+                                p {
+                                    color: #9c9c9c;
+                                    padding: 10px 18px 0;
+                                    font-size: 13px;
+                                }
+                            }
+                        }
+
+                        &::after {
+                            width: 14px;
+                            height: 14px;
+                            line-height: 14px;
+                            margin-left: 4px;
+                            content: '\e900';
+                            font-family: 'icomoon';
+                            vertical-align: middle;
+                            transition: $color-transition;
+                        }
+
+                        &:hover {
+                            .flyout-menu {
+                                // display: block;
+                                visibility: visible;
+                                opacity: 1;
+                            }
+
+                            a,
+                            &::after {
+                                color: $color-light;
+                            }
+                        }
+                    }
+
+                    .link {
+                        &:hover {
+                            a {
+                                color: $color-green;
+                            }
+                        }
+                    }
+
+                    .language {
+                        font-family: 'icomoon';
+                        float: left;
+                        line-height: 55px;
+                        padding: 0 12px;
+
+                        &::after {
+                            content: '';
+                        }
+
+                        i {
+                            border-right: 1px solid #e0e0e0;
+                            border-left: 1px solid #e0e0e0;
+                            padding: 0 8px;
+                            font-size: 13px;
+                            color: #000;
+                            cursor: pointer;
+                        }
+                    }
+
+                    .omit {
+                        display: none;
+                        font-family: 'icomoon';
+                        cursor: pointer;
+
+                        &::after {
+                            content: '';
+                        }
+
+                        ul li a {
+                            margin: 10px 0;
+                            padding-left: 10px;
+
+                            i {
+                                font-size: 16px;
+                                padding: 0 8px;
+                                color: #898989;
+                            }
+                        }
+                    }
+                }
+            }
+
+
+
+            .btn,
+            .button {
+                margin-left: 8px;
+                font-family: 'icomoon';
+                position: relative;
+                width: 40px;
+                height: 22px;
+                border-radius: 11px;
+                border: 1px solid #ccc;
+
+                span {
+                    float: left;
+                    width: 18px;
+                    height: 18px;
+                    font-size: 16px;
+                    color: #898989;
+                    border-radius: 50%;
+                    background-color: #fff;
+                }
+            }
+
+            .com {
+                font-family: 'icomoon';
+                width: 36px;
+                height: 36px;
+                line-height: 36px;
+
+                span {
+                    display: block;
+                    margin: 0 8px;
+                    width: 20px;
+                    height: 20px;
+                    font-size: 18px;
+                }
+
+                &:hover {
+                    color: $color-dark;
+                }
+            }
+        }
+    }
+}
+
+// 主体模块
+.main {
+    margin: 0 auto;
+
+    .hero {
+        padding: 96px 32px;
+        text-align: center;
+
+        .tagline {
+            white-space: nowrap;
+            max-width: 960px;
+            height: 190px;
+            margin: 0 auto;
+            line-height: 1.2;
+            font-weight: 900;
+            font-size: 76px;
+            color: #1c1e21;
+
+            .accent {
+                background: linear-gradient(315deg, #42d392, #647eff);
+                background-clip: text;
+                -webkit-background-clip: text;
+                color: transparent;
+            }
+        }
+
+        .desciption {
+            max-width: 960px;
+            margin: 24px auto 40px;
+            font-size: 22px;
+            line-height: 1.5;
+            color: #898989;
+        }
+
+        .action {
+            font-family: 'icomoon';
+
+            a {
+                position: relative;
+                display: inline-block;
+                font-size: 16px;
+                font-weight: 500;
+                margin-right: 18px;
+                transition: $color-transition;
+                border-radius: 8px;
+
+            }
+
+            .why-vue {
+                background-color: #42b883;
+                font-weight: 600;
+                color: #fff;
+                padding: 8px 1em 8px 3em;
+
+                span {
+                    display: inline;
+                    position: absolute;
+                    left: 15px;
+                    top: 8px;
+                    font-size: 16px;
+                    margin-left: 2px;
+                }
+
+                &:hover {
+                    background-color: #33a06f;
+                }
+            }
+
+            .get-started {
+                background-color: #f1f1f1;
+                color: #476582;
+                padding: 8px 18px;
+
+                span {
+                    font-size: 10px;
+                    position: relative;
+                    top: 0;
+                    left: 0;
+                    transition: $color-transition;
+                }
+
+                &:hover {
+                    background-color: #ccc;
+
+                    span {
+                        left: 5px;
+                    }
+                }
+            }
+        }
+    }
+
+    .appwrite {
+        display: flex;
+        align-items: center;
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        padding: 12px 24px;
+
+        span {
+            flex: 1;
+            text-align: left;
+            font-size: 13px;
+
+        }
+
+        .special-sponsor {
+            text-align: right;
+        }
+
+        a {
+            display: flex;
+            justify-content: center;
+            padding: 0 24px;
+
+            img {
+                height: 42px;
+                margin: -6px 0;
+            }
+        }
+    }
+
+    .box-container {
+        display: flex;
+        max-width: 960px;
+        margin: 0 auto;
+        flex-wrap: wrap;
+
+        .box {
+            flex: 0 32%;
+            padding: 28px 36px;
+
+            h2 {
+                font-size: 20px;
+                margin-bottom: 0.75em;
+            }
+
+            p {
+                font-size: 15px;
+            }
+        }
+    }
+
+    .sponsors {
+        max-width: 900px;
+        margin: 0 auto;
+
+        h2 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 1em;
+        }
+
+        .sponsors-container {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 3em;
+
+            a {
+                max-width: 276px;
+                flex: 32%;
+                display: flex;
+                margin: 2px 2px;
+                justify-content: space-around;
+                align-items: center;
+                background-color: #f9f9f9;
+                border-radius: 5px;
+                height: 114px;
+                color: #ccc;
+
+                img {
+                    max-width: 210px;
+                    height: auto;
+                    max-height: 100px;
+                    object-fit: contain;
+                }
+            }
+        }
+
+        .gold {
+            a {
+                max-width: 206px;
+                flex: 24%;
+                height: 84px;
+
+                img {
+                    max-width: 150px;
+                    max-height: 70px;
+                    height: auto;
+                    object-fit: contain;
+                }
+            }
+        }
+    }
+
+    .sitemap {
+        background-color: #f9f9f9;
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            max-width: 900px;
+            max-height: 480px;
+            margin: 0 auto;
+            padding: 24px 32px;
+            font-family: 'icomoon';
+
+            .container-items {
+                margin-bottom: 2em;
+
+                h4 {
+                    margin-bottom: 0.25em;
+                    font-weight: 500;
+                    color: #213547;
+                }
+
+                a {
+                    color: #898989;
+                    font-size: .9em;
+
+                    span {
+                        font-size: 5px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+//底部模块
+.footer {
+    padding: 23px 24px 24px;
+    text-align: center;
+    line-height: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    background-color: #f9f9f9;
+
+    p {
+        color: #898989;
+
+        a {
+            color: #000;
+            transition: $color-transition;
+
+            &:hover {
+                color: #898989;
+            }
+        }
+    }
+}
+
+@media screen and (max-width:1280px) {
+    .header .header-nav .header-right .nav ul .omit {
+        display: block;
+    }
+
+    .header .header-nav .header-right .btn,
+    .header .header-nav .header-right .com {
+        display: none;
+    }
+}
+
+@media screen and (max-width:960px) {
+    .header {
+        position: relative;
+    }
+
+    .header .header-nav .header-left .search .text {
+        display: none;
+    }
+
+    .main .hero .tagline {
+        font-size: 64px;
+    }
+
+    .main .hero .desciption {
+        font-size: 18px;
+        margin-bottom: 48px;
+    }
+
+    .main .sitemap .container {
+        max-height: 680px;
+    }
+}
+
+@media screen and (max-width:768px) {
+
+    .header .header-nav .header-left .search,
+    .header .header-nav .header-right .nav,
+    .header .header-nav .header-right .btn,
+    .header .header-nav .header-right a {
+        display: none;
+    }
+
+    .header .header-nav .header-right .item {
+        display: block;
+    }
+
+    .main .hero .tagline {
+        font-size: 48px;
+    }
+
+    .main .box-container .box {
+        flex: 100%;
+    }
+
+    .main .sponsors .sponsors-container a {
+        flex: 50%;
+        max-width: 330px;
+    }
+
+    .main .sponsors .gold a {
+        flex: 32%;
+        max-width: 220px;
+    }
+
+    .main .sitemap .container {
+        max-height: 1280px;
+    }
+}
+
+
+
+
+@media screen and (min-width:768px) {}
